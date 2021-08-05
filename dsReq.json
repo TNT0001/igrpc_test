@@ -1,0 +1,24 @@
+{
+  "connection_name" : "report",
+  "table_name" : "users",
+  "paginate": {
+    "page": 1,
+    "limit": 10
+  },
+  "sorts": [
+    {
+      "column": "phone",
+      "mode": "desc"
+    },
+    {
+      "column": "id",
+      "mode": "asc"
+    }
+  ],
+  "omit": [
+    "ingore_column_name"
+  ],
+  "select": [
+    "*"
+  ]
+}
