@@ -2,10 +2,10 @@ package main
 
 import (
 	"encoding/json"
+	"git.ghtk.vn/gmicro/ig/igrpc-proto/generated/igdata-service"
 	"log"
 	"math/rand"
 	"os"
-	"tungnguyen/grpc_proto"
 )
 
 func createDSRequest (maxSize int64) (*igrpcproto.SQLQueryRequest, error){

@@ -7,10 +7,10 @@ import (
 	"fmt"
 	"git.ghtk.vn/gmicro/gmicro/config"
 	"git.ghtk.vn/gmicro/gmicro/service/grpcclient"
+	"git.ghtk.vn/gmicro/ig/igrpc-proto/generated/igdata-service"
 	"google.golang.org/grpc/credentials"
 	"os"
 	"tungnguyen/client_interceptor"
-	"tungnguyen/grpc_proto"
 )
 
 var IgdataClient igrpcproto.IgdataClient

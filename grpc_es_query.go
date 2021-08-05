@@ -6,7 +6,7 @@ import (
 	"log"
 	"strings"
 	"time"
-	"tungnguyen/grpc_proto"
+	"git.ghtk.vn/gmicro/ig/igrpc-proto/generated/igdata-service"
 )
 
 //test es query

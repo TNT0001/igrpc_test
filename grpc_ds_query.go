@@ -3,10 +3,10 @@ package main
 import (
 	"context"
 	"fmt"
+	"git.ghtk.vn/gmicro/ig/igrpc-proto/generated/igdata-service"
 	"log"
 	"strings"
 	"time"
-	"tungnguyen/grpc_proto"
 )
 
 //test ds query
