@@ -68,5 +68,5 @@ func esStreamQueryTest(numIterator int, printResult bool){
 		}
 	}()
 	wg.Wait()
-	fmt.Printf("es stream query complte\n total time : %v\n", time.Now().Sub(start))
+	fmt.Printf("es stream query complte\n total time : %v\n", time.Since(start))
 }

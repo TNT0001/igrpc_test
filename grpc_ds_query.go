@@ -33,5 +33,5 @@ func dsQueryTest(numIterator int, printResult bool){
 			fmt.Println(string(result.GetData()))
 		}
 	}
-	fmt.Printf("ds query complte\ntotal time : %v\n", time.Now().Sub(start))
+	fmt.Printf("ds query complte\ntotal time : %v\n", time.Since(start))
 }

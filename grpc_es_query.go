@@ -35,5 +35,5 @@ func esQueryTest (numIterator int, printResult bool){
 			fmt.Println(string(esResult.GetResponse()))
 		}
 	}
-	fmt.Printf("es query complte\n total time : %v\n", time.Now().Sub(start))
+	fmt.Printf("es query complte\n total time : %v\n", time.Since(start))
 }

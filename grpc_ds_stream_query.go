@@ -65,5 +65,5 @@ func dsStreamQueryTest(numIterator int, printResult bool){
 		}
 	}()
 	wg.Wait()
-	fmt.Printf("ds stream query complete\n total time : %v\n", time.Now().Sub(start))
+	fmt.Printf("ds stream query complete\n total time : %v\n", time.Since(start))
 }
