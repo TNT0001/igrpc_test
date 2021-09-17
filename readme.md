@@ -9,7 +9,7 @@ Flags options :
 
 ```bash
 service int[,int...]
-to specify what service to test, if don't provide, will run all service
+to specify what service to test, if dont provide, will run all service
 
 options:
   1 - SQLQuery

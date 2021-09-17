@@ -1,24 +1,11 @@
 {
   "connection_name" : "report",
-  "table_name" : "users",
+  "table_name" : "ass á 4128@#2423",
   "paginate": {
     "page": 1,
     "limit": 10
   },
-  "sorts": [
-    {
-      "column": "phone",
-      "mode": "desc"
-    },
-    {
-      "column": "id",
-      "mode": "asc"
-    }
-  ],
-  "omit": [
-    "ingore_column_name"
-  ],
   "select": [
-    "*"
+    "package_id","product_name","product_id, ass á 4128@#2423"
   ]
 }

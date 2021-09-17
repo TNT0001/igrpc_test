@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	"log"
 	"strconv"
 	"strings"
 )
@@ -26,7 +25,8 @@ func main() {
 		for _, i := range services {
 			j, err := strconv.Atoi(i)
 			if err != nil || j < 0 || j > len(serviceList) {
-				log.Fatalf("service number must be int, gt than -1 and lt than %d", len(serviceList))
+				services = []string{}
+				break
 			}
 			serviceNums = append(serviceNums, j)
 		}
@@ -43,5 +43,18 @@ func main() {
 	for _, i := range serviceNums {
 		serviceList[i](*num, *printAble)
 	}
+
+	//s := make(chan error)
+	//go func() {
+	//	s <- http.ListenAndServe(":14321", nil)
+	//}()
+	//for  {
+	//	select {
+	//	case <- s:
+	//		return
+	//	default:
+	//		time.Sleep(1 * time.Second)
+	//	}
+	//}
 }
 

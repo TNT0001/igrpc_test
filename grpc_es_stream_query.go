@@ -3,19 +3,19 @@ package main
 import (
 	"context"
 	"fmt"
+	"git.ghtk.vn/gmicro/ig/igrpc-proto/generated/igdata-service"
 	"io"
 	"log"
 	"strings"
 	"sync"
 	"time"
-	"git.ghtk.vn/gmicro/ig/igrpc-proto/generated/igdata-service"
 )
 
 func esStreamQueryTest(numIterator int, printResult bool){
 	fmt.Printf("es stream query start %s\n", strings.Repeat("-", 40))
 	var reqs []*igrpcproto.ESQuery
 	for i := 0; i < numIterator; i++ {
-		request, err := createESRequest(100)
+		request, err := createESRequest(10000)
 		if err != nil {
 			log.Fatalf("error when create req err : %s\n", err.Error())
 		}

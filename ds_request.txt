@@ -1,0 +1,12 @@
+,
+  "conjunctions": [
+    {
+      "type": "or",
+      "conditions": [
+        {
+          "column": "phone",
+          "comparison_operator": "lt"
+        }
+      ]
+    }
+  ]

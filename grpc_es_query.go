@@ -3,10 +3,11 @@ package main
 import (
 	"context"
 	"fmt"
+	"git.ghtk.vn/gmicro/ig/igrpc-proto/generated/igdata-service"
+	"google.golang.org/grpc/status"
 	"log"
 	"strings"
 	"time"
-	"git.ghtk.vn/gmicro/ig/igrpc-proto/generated/igdata-service"
 )
 
 //test es query
@@ -14,7 +15,7 @@ func esQueryTest (numIterator int, printResult bool){
 	fmt.Printf("es query start %s\n", strings.Repeat("-", 40))
 	var reqs []*igrpcproto.ESQuery
 	for i := 0; i < numIterator; i++ {
-		request, err := createESRequest(100)
+		request, err := createESRequest(10000)
 		if err != nil {
 			log.Fatalf("error when create req err : %s", err.Error())
 		}
@@ -27,6 +28,10 @@ func esQueryTest (numIterator int, printResult bool){
 	defer cancel()
 	for i := 0; i < numIterator; i++ {
 		esResult, err := IgdataClient.EsQuery(newCtx, reqs[i])
+		if err != nil {
+			errStatus, _ := status.FromError(err)
+			fmt.Printf("can't get result, err : %s code : %d\n", errStatus.Message(), errStatus.Code())
+		}
 		if err != nil {
 			fmt.Println(err)
 			return

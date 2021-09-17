@@ -3,29 +3,32 @@ package main
 import (
 	"context"
 	"fmt"
+	"git.ghtk.vn/gmicro/ig/igrpc-proto/generated/igdata-service"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/status"
 	"io"
 	"log"
 	"strings"
 	"sync"
 	"time"
-	"git.ghtk.vn/gmicro/ig/igrpc-proto/generated/igdata-service"
 )
 
 func dsStreamQueryTest(numIterator int, printResult bool){
 	var reqs []*igrpcproto.SQLQueryRequest
 	for i := 0; i < numIterator; i++ {
-		request, err := createDSRequest(20)
+		request, err := createDSRequest(1000)
 		if err != nil {
 			log.Fatalf("error when create req err : %s", err.Error())
 		}
 		reqs = append(reqs, request)
 	}
-
+	//ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
+	//defer cancel()
 	fmt.Printf("ds stream query start %s\n", strings.Repeat("-", 40))
 	start := time.Now()
-	stream, err := IgdataClient.SQLQueryStream(context.Background())
+	stream, err := IgdataClient.SQLQueryStream(context.Background(), grpc.WaitForReady(true))
 	if err != nil {
-		fmt.Println("can't get stream")
+		fmt.Printf("can't get stream err : %s", err)
 		return
 	}
 	wg := &sync.WaitGroup{}
@@ -56,7 +59,11 @@ func dsStreamQueryTest(numIterator int, printResult bool){
 				return
 			}
 			if err != nil {
-				fmt.Printf("error when recieve %s", err.Error())
+				errStatus, _ := status.FromError(err)
+				fmt.Printf("can't get result, err : %s code : %d\n", errStatus.Message(), errStatus.Code())
+			}
+			if err != nil {
+				fmt.Printf("error when recieve %s\n", err.Error())
 				return
 			}
 			if printResult{
